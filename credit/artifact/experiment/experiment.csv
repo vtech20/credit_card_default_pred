@@ -1,3 +1,6 @@
 experiment_id,initialization_timestamp,artifact_time_stamp,running_status,start_time,stop_time,execution_time,message,experiment_file_path,accuracy,is_model_accepted,created_time_stamp
 18da8871-67d6-47ff-b098-db8c9201cf11,2022-07-21-14-25-10,2022-07-21-14-25-10,True,2022-07-21 14:25:10.903016,,,Pipeline has been started.,experiment.csv,,,2022-07-21 14:25:10.928633
 18da8871-67d6-47ff-b098-db8c9201cf11,2022-07-21-14-25-10,2022-07-21-14-25-10,False,2022-07-21 14:25:10.903016,2022-07-21 14:25:12.785623,0 days 00:00:01.882607,Pipeline has been completed.,experiment.csv,,,2022-07-21 14:25:12.785623
+e2a94fe7-35da-4cfd-8a47-37aaa9f5d9f8,2022-07-21-19-13-25,2022-07-21-19-13-25,True,2022-07-21 19:13:26.028011,,,Pipeline has been started.,experiment.csv,,,2022-07-21 19:13:26.039349
+6b3ca0ae-141a-4b7c-8749-fd70bfe71df1,2022-07-21-19-19-04,2022-07-21-19-19-04,True,2022-07-21 19:19:05.355760,,,Pipeline has been started.,experiment.csv,,,2022-07-21 19:19:05.370970
+6b3ca0ae-141a-4b7c-8749-fd70bfe71df1,2022-07-21-19-19-04,2022-07-21-19-19-04,False,2022-07-21 19:19:05.355760,2022-07-21 19:19:07.957829,0 days 00:00:02.602069,Pipeline has been completed.,experiment.csv,,,2022-07-21 19:19:07.957829
