@@ -1,4 +1,4 @@
-from msilib.schema import CreateFolder
+
 from credit.exception import CreditException
 import sys
 from credit.logger import logging
