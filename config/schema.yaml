@@ -1,5 +1,4 @@
 columns:
-  ID: int
   LIMIT_BAL: float
   SEX: int
   EDUCATION: int
@@ -23,9 +22,9 @@ columns:
   PAY_AMT4: float
   PAY_AMT5: float
   PAY_AMT6: float
-  default.payment.next.month: int
+  default_pay: int
 
-target_column: default.payment.next.month
+target_column: default_pay
 
 domain_value:
   SEX:
@@ -33,7 +32,6 @@ domain_value:
     - 2
 
 numerical_columns:
-  - ID
   - LIMIT_BAL
   - SEX
   - EDUCATION

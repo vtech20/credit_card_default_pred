@@ -92,6 +92,7 @@ class ModelEvaluation:
             train_dataframe = load_data(file_path=train_file_path,
                                                            schema_file_path=schema_file_path,
                                                            )
+            print(train_dataframe.columns)
             test_dataframe = load_data(file_path=test_file_path,
                                                           schema_file_path=schema_file_path,
                                                           )

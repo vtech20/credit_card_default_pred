@@ -3,6 +3,7 @@ import sys,os
 from credit.exception import CreditException
 from credit.logger import logging
 from credit.entity.artifact_entity import DataIngestionArtifact
+from credit.constant import COLUMN_DEF_PAY_NEXT_MONTH,COLUMN_DEFAULT_PAY,COLUMN_ID
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
@@ -51,6 +52,8 @@ class DataIngestion:
 
             logging.info(f"Reading csv file: [{credit_file_path}]")
             credit_data_frame = pd.read_csv(credit_file_path)
+            credit_data_frame = credit_data_frame.rename(columns={COLUMN_DEF_PAY_NEXT_MONTH: COLUMN_DEFAULT_PAY})
+            credit_data_frame.drop(COLUMN_ID,axis=1,inplace = True)
 
             logging.info(f"Splitting data into train and test")
             strat_train_set = None
@@ -58,7 +61,7 @@ class DataIngestion:
 
             split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
 
-            for train_index,test_index in split.split(credit_data_frame, credit_data_frame["default.payment.next.month"]):
+            for train_index,test_index in split.split(credit_data_frame, credit_data_frame["default_pay"]):
                 strat_train_set = credit_data_frame.loc[train_index]
                 strat_test_set = credit_data_frame.loc[test_index]
 

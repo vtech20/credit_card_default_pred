@@ -1,0 +1,115 @@
+{% extends 'header.html' %}
+
+{% block head %}
+
+
+<title>Index</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12"  style="margin-bottom:20px;">
+        <div class="row">
+            <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                End to End Machine Learning Project.
+            </div>
+            <div class="card-body">
+        
+                <h5 class="card-title">Credit Card Default Prediction.</h5>
+                <p class="card-text">Financial threats are displaying a trend about the credit risk of commercial banks as the incredible improvement in the financial industry has arisen. In this way, one of the biggest threats faces by commercial banks is the risk prediction of credit clients. The goal is to predict the probability of credit default based on credit card owner's characteristics and payment history</p>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-4">
+            <p class="card-text">This dataset contains information on default payments, demographic factors, credit data, history of payment, and bill statements of credit card clients in Taiwan from April 2005 to September 2005.</p>
+            
+        </div>
+
+
+        </div>
+        </div>
+<div class="col-md-4 col-lg-4 col-sm-12">
+<div class="card">
+    <div class="card-header">
+       View Logs
+    </div>
+    <div class="card-body">
+
+        <h5 class="card-title">Log Files</h5>
+        <p class="card-text">All model training log file can be downloaded.</p>
+        <a class="btn btn-primary" href="/logs">Check Logs</a>
+    </div>
+</div>
+</div>
+
+
+<div class="col-md-4 col-lg-4 col-sm-12" style="margin-bottom:20px;">
+    <div class="card">
+        <div class="card-header">
+           View Artifacts
+        </div>
+        <div class="card-body">
+    
+            <h5 class="card-title">Artifact Files</h5>
+            <p class="card-text">All model artifacts file can be downloaded.</p>
+            <a class="btn btn-primary" href="/artifact">Check Artifacts</a>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
+        <div class="card">
+            <div class="card-header">
+               View Trained Models
+            </div>
+            <div class="card-body">
+        
+                <h5 class="card-title">Trained Models</h5>
+                <p class="card-text">All model file can be downloaded.</p>
+                <a class="btn btn-primary" href="/saved_models">Check Models</a>
+            </div>
+        </div>
+        </div>
+
+        
+    <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
+        <div class="card">
+            <div class="card-header">
+              Credit Default Prediction
+            </div>
+            <div class="card-body">
+        
+                <h5 class="card-title">Access Credit default</h5>
+                <p class="card-text">Form will be displayed. Submit the form to get credit default prediction.</p>
+                <a class="btn btn-primary" href="/predict">Get credit default</a>
+            </div>
+        </div>
+        </div>
+ 
+        <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
+            <div class="card">
+                <div class="card-header">
+                  Train credit default model.
+                </div>
+                <div class="card-body">
+            
+                    <h5 class="card-title">Initiate model training.</h5>
+                    <p class="card-text">Model training will be done. Files such as log, artifact and models can be viewed and downloaded using appropriate link.</p>
+                    <a class="btn btn-danger" href="/train">Initiate Training</a>
+                </div>
+            </div>
+            </div>
+        
+
+
+
+
+            
+</div>
+
+{% endblock %}

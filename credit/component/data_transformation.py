@@ -18,23 +18,20 @@ from credit.util.util import read_yaml_file,save_object,save_numpy_array_data,lo
 
 class FeatureTransformer(BaseEstimator, TransformerMixin):
 
-    def __init__(self,marriage_idx=4,
-                 education_idx=3,
-                 pay_0_idx = 6,
-                 id_idx = 0,
+    def __init__(self,marriage_idx=3,
+                 education_idx=2,
+                 pay_0_idx = 5,
                  columns=None):
         try:
             self.columns = columns
             if self.columns is not None:
                 marriage_idx = self.columns.index(COLUMN_MARRIAGE_KEY)
                 education_idx = self.columns.index(COLUMN_EDUCATION_KEY)
-                pay_0_idx = self.columns.index(COLUMN_PAY_0)
-                id_idx = self.columns.index(COLUMN_ID)
+                pay_0_idx = self.columns.index(COLUMN_PAY_0)              
             
             self.marriage_idx = marriage_idx
             self.education_idx = education_idx
             self.pay_0_idx = pay_0_idx
-            self.id_idx = id_idx
         
         except Exception as e:
             raise CreditException(e,sys) from e
@@ -48,7 +45,6 @@ class FeatureTransformer(BaseEstimator, TransformerMixin):
             fil = (X[COLUMN_EDUCATION_KEY] == 5) | (X[COLUMN_EDUCATION_KEY] == 6) | (X[COLUMN_EDUCATION_KEY] == 0)
             X.loc[fil,COLUMN_EDUCATION_KEY] = 4
             X = X.rename(columns={X.columns[self.pay_0_idx] : COLUMN_PAY_1 })
-            X.drop(X.columns[[self.id_idx]],axis=1,inplace = True)
             col_lst = [COLUMN_PAY_1,COLUMN_PAY_2,COLUMN_PAY_3,COLUMN_PAY_4,COLUMN_PAY_5,COLUMN_PAY_6]
             for col in col_lst:
                 X[col] = X[col].replace(-1,0)

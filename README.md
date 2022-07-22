@@ -1,7 +1,8 @@
 # credit_card_default_pred
 
-# Start Machine Learning project.
-This is the first machine learning project
+## Abstract
+Financial threats are displaying a trend about the credit risk of commercial banks as the incredible improvement in the financial industry has arisen. In this way, one of the biggest threats faces by commercial banks is the risk prediction of credit clients. The goal is to predict the probability of credit default based on credit card owner's characteristics and payment history.
+
 ## Software and account Requirement.
 
 1. Github Account [https://github.com/]
@@ -66,12 +67,12 @@ To setup CI/CD pipeline in heroku we need 3 information
 
 1. HEROKU_EMAIL = vtech20@gmail.com
 2. HEROKU_API_KEY = <>
-3. HEROKU_APP_NAME = ml-credit-app
+3. HEROKU_APP_NAME = ml-credit-default-application
 
 BUILD DOCKER IMAGE
+```me>:<tagname> .
 ```
-docker build -t <image_name>:<tagname> .
-```
+docker build -t <image_na
 Note: Image name for docker must be lowercase
 
 To list docker image
