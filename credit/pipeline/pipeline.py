@@ -9,10 +9,12 @@ from threading import Thread
 from typing import List
 
 from multiprocessing import Process
-from credit.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact, DataTransformationArtifact
+from credit.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact, \
+    DataTransformationArtifact,ModelTrainerArtifact
 from credit.component.data_ingestion import DataIngestion
 from credit.component.data_validation import DataValidation
 from credit.component.data_transformation import DataTransformation
+from credit.component.model_trainer import ModelTrainer
 import os, sys
 from collections import namedtuple
 from datetime import datetime
@@ -67,6 +69,15 @@ class Pipeline(Thread):
         except Exception as e:
             raise CreditException(e, sys)
 
+    def start_model_trainer(self, data_transformation_artifact: DataTransformationArtifact) -> ModelTrainerArtifact:
+        try:
+            model_trainer = ModelTrainer(model_trainer_config=self.config.get_model_trainer_config(),
+                                         data_transformation_artifact=data_transformation_artifact
+                                         )
+            return model_trainer.initiate_model_trainer()
+        except Exception as e:
+            raise CreditException(e, sys) from e
+
     def run_pipeline(self):
         try:
             if Pipeline.experiment.running_status:
@@ -99,6 +110,7 @@ class Pipeline(Thread):
                 data_ingestion_artifact=data_ingestion_artifact,
                 data_validation_artifact=data_validation_artifact
             )            
+            model_trainer_artifact = self.start_model_trainer(data_transformation_artifact=data_transformation_artifact)
             
             logging.info("Pipeline completed.")
 
