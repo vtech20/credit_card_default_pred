@@ -51,7 +51,6 @@ class FeatureTransformer(BaseEstimator, TransformerMixin):
             X.drop(X.columns[[self.id_idx]],axis=1,inplace = True)
             col_lst = [COLUMN_PAY_1,COLUMN_PAY_2,COLUMN_PAY_3,COLUMN_PAY_4,COLUMN_PAY_5,COLUMN_PAY_6]
             for col in col_lst:
-                print(col)
                 X[col] = X[col].replace(-1,0)
                 X[col] = X[col].replace(-2,0)
             return X
