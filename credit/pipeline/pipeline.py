@@ -10,11 +10,12 @@ from typing import List
 
 from multiprocessing import Process
 from credit.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact, \
-    DataTransformationArtifact,ModelTrainerArtifact
+    DataTransformationArtifact,ModelTrainerArtifact,ModelEvaluationArtifact
 from credit.component.data_ingestion import DataIngestion
 from credit.component.data_validation import DataValidation
 from credit.component.data_transformation import DataTransformation
 from credit.component.model_trainer import ModelTrainer
+from credit.component.model_evaluation import ModelEvaluation
 import os, sys
 from collections import namedtuple
 from datetime import datetime
@@ -78,6 +79,19 @@ class Pipeline(Thread):
         except Exception as e:
             raise CreditException(e, sys) from e
 
+    def start_model_evaluation(self, data_ingestion_artifact: DataIngestionArtifact,
+                               data_validation_artifact: DataValidationArtifact,
+                               model_trainer_artifact: ModelTrainerArtifact) -> ModelEvaluationArtifact:
+        try:
+            model_eval = ModelEvaluation(
+                model_evaluation_config=self.config.get_model_evaluation_config(),
+                data_ingestion_artifact=data_ingestion_artifact,
+                data_validation_artifact=data_validation_artifact,
+                model_trainer_artifact=model_trainer_artifact)
+            return model_eval.initiate_model_evaluation()
+        except Exception as e:
+            raise CreditException(e, sys) from e
+
     def run_pipeline(self):
         try:
             if Pipeline.experiment.running_status:
@@ -111,6 +125,9 @@ class Pipeline(Thread):
                 data_validation_artifact=data_validation_artifact
             )            
             model_trainer_artifact = self.start_model_trainer(data_transformation_artifact=data_transformation_artifact)
+            model_evaluation_artifact = self.start_model_evaluation(data_ingestion_artifact=data_ingestion_artifact,
+                                                                    data_validation_artifact=data_validation_artifact,
+                                                                    model_trainer_artifact=model_trainer_artifact)
             
             logging.info("Pipeline completed.")
 
@@ -124,8 +141,8 @@ class Pipeline(Thread):
                                              execution_time=stop_time - Pipeline.experiment.start_time,
                                              message="Pipeline has been completed.",
                                              experiment_file_path=Pipeline.experiment_file_path,
-                                             is_model_accepted=None,
-                                             accuracy=None
+                                             is_model_accepted=model_evaluation_artifact.is_model_accepted,
+                                             accuracy=model_trainer_artifact.model_accuracy
                                              )
             logging.info(f"Pipeline experiment: {Pipeline.experiment}")
             self.save_experiment()

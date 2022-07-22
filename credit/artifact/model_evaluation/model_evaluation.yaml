@@ -1,0 +1,7 @@
+best_model:
+  model_path: C:\Users\vr19\OneDrive - Capgemini\Backup\Backup files_Vignesh\D_Files\Reference\Machine
+    Learning\Credit_card_default\credit_card_default_pred\credit\artifact\model_trainer\2022-07-22-18-11-10\trained_model\model.pkl
+history:
+  2022-07-22-18-11-10:
+    model_path: C:\Users\vr19\OneDrive - Capgemini\Backup\Backup files_Vignesh\D_Files\Reference\Machine
+      Learning\Credit_card_default\credit_card_default_pred\credit\artifact\model_trainer\2022-07-22-18-05-21\trained_model\model.pkl
