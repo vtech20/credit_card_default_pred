@@ -10,7 +10,7 @@ from credit.entity.model_factory import MetricInfoArtifact, ModelFactory,GridSea
 from credit.entity.model_factory import evaluate_classification_model
 from credit.exception import CreditException
 
-
+## This is the model trainer module
 
 class CreditEstimatorModel:
     def __init__(self, preprocessing_object, trained_model_object):
